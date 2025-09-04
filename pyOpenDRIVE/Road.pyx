@@ -156,8 +156,10 @@ cdef class PyRoad:
 
     def get_lane_mesh(self, PyLane lane, const double s_start = 0, const double s_end = 0, const double eps = 0, outline_indices = []):
         cdef vector[uint32_t] c_vec
+        cdef int idx_int
         for i in range(len(outline_indices)):
-            c_vec.push_back(<uint32_t>outline_indices[i])
+            idx_int = outline_indices[i]
+            c_vec.push_back(<uint32_t>idx_int)
         if s_start != 0 and s_end != 0:
             return PyMesh3D.wrap(self.unwrap().get_lane_mesh(lane.unwrap()[0], s_start, s_end, eps, &c_vec))
         else:

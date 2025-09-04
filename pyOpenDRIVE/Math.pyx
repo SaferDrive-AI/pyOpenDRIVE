@@ -12,7 +12,7 @@ cdef class PyVec2D:
     @property
     def array(self):
         out_arr = []
-        cdef int *internal_array = <int*>self.unwrap().data()
+        cdef double *internal_array = <double*>self.unwrap().data()
         for i in range(self.unwrap().size()):
             out_val = internal_array[i]
             out_arr.append(out_val)
@@ -25,7 +25,7 @@ cdef class PyVec3D:
     @property
     def array(self):
         out_arr = []
-        cdef int *internal_array = <int*>self.unwrap().data()
+        cdef double *internal_array = <double*>self.unwrap().data()
         for i in range(self.unwrap().size()):
             out_val = internal_array[i]
             out_arr.append(out_val)
